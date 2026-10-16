@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuccessRouteImport } from './routes/success'
 import { Route as RepaymentScheduleRouteImport } from './routes/repayment-schedule'
 import { Route as RatesRouteImport } from './routes/rates'
 import { Route as LoansRouteImport } from './routes/loans'
@@ -19,6 +20,11 @@ import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SuccessRoute = SuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RepaymentScheduleRoute = RepaymentScheduleRouteImport.update({
   id: '/repayment-schedule',
   path: '/repayment-schedule',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/loans': typeof LoansRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
+  '/success': typeof SuccessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/loans': typeof LoansRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
+  '/success': typeof SuccessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/loans': typeof LoansRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
+  '/success': typeof SuccessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/loans'
     | '/rates'
     | '/repayment-schedule'
+    | '/success'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/loans'
     | '/rates'
     | '/repayment-schedule'
+    | '/success'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/loans'
     | '/rates'
     | '/repayment-schedule'
+    | '/success'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,10 +157,18 @@ export interface RootRouteChildren {
   LoansRoute: typeof LoansRoute
   RatesRoute: typeof RatesRoute
   RepaymentScheduleRoute: typeof RepaymentScheduleRoute
+  SuccessRoute: typeof SuccessRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/repayment-schedule': {
       id: '/repayment-schedule'
       path: '/repayment-schedule'
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoansRoute: LoansRoute,
   RatesRoute: RatesRoute,
   RepaymentScheduleRoute: RepaymentScheduleRoute,
+  SuccessRoute: SuccessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
