@@ -227,12 +227,12 @@ function ApplyPage() {
       }
 
       toast.dismiss(toastId);
-      toast.success("Application successfully sent to raijeet304@gmail.com!");
+      toast.success("Your advance application is submitted");
       setSubmitted(true);
     } catch (err) {
       console.error("Submission error:", err);
       toast.dismiss(toastId);
-      toast.success("Application received successfully!");
+      toast.success("Your advance application is submitted");
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -247,10 +247,10 @@ function ApplyPage() {
           <CheckCircle2 className="h-8 w-8 text-accent" />
         </div>
         <h1 className="mt-6 text-3xl md:text-4xl font-bold">
-          Application Received
+          Advance Application Submitted
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Thanks, {data.fullName?.split(" ")[0]}! We're reviewing your application for a{" "}
+          Thanks, {data.fullName?.split(" ")[0]}! Your advance application has been submitted and is being reviewed for a{" "}
           <strong>${Number(data.loanAmount).toLocaleString()}</strong> loan at{" "}
           <strong>10% APR</strong>.
         </p>
@@ -769,7 +769,7 @@ function ApplyPage() {
               {submitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending to raijeet304@gmail.com…
+                  Submitting application…
                 </>
               ) : (
                 "Submit Application"
