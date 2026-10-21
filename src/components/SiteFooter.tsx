@@ -32,6 +32,7 @@ export function SiteFooter() {
             <li><Link to="/how-it-works" className="hover:text-foreground">How It Works</Link></li>
             <li><Link to="/faq" className="hover:text-foreground">FAQ</Link></li>
             <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
+            <li><Link to="/privacy-policy" className="hover:text-foreground">Privacy Policy</Link></li>
           </ul>
         </div>
         <div>
@@ -45,7 +46,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="container mx-auto px-4 py-6 text-xs text-muted-foreground flex flex-col md:flex-row gap-3 justify-between">
-          <p>© {new Date().getFullYear()} VercelLoans. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} VercelLoans. All rights reserved. · <Link to="/privacy-policy" className="underline hover:text-foreground">Privacy Policy</Link></p>
           <p>Demo site for illustration only. Not an actual lender. APRs and terms shown are examples.</p>
         </div>
       </div>

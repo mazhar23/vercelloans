@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as RepaymentScheduleRouteImport } from './routes/repayment-schedule'
 import { Route as RatesRouteImport } from './routes/rates'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as LoansRouteImport } from './routes/loans'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -33,6 +34,11 @@ const RepaymentScheduleRoute = RepaymentScheduleRouteImport.update({
 const RatesRoute = RatesRouteImport.update({
   id: '/rates',
   path: '/rates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoansRoute = LoansRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/loans': typeof LoansRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
   '/success': typeof SuccessRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/loans': typeof LoansRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
   '/success': typeof SuccessRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/loans': typeof LoansRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/rates': typeof RatesRoute
   '/repayment-schedule': typeof RepaymentScheduleRoute
   '/success': typeof SuccessRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/how-it-works'
     | '/loans'
+    | '/privacy-policy'
     | '/rates'
     | '/repayment-schedule'
     | '/success'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/how-it-works'
     | '/loans'
+    | '/privacy-policy'
     | '/rates'
     | '/repayment-schedule'
     | '/success'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/how-it-works'
     | '/loans'
+    | '/privacy-policy'
     | '/rates'
     | '/repayment-schedule'
     | '/success'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoansRoute: typeof LoansRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RatesRoute: typeof RatesRoute
   RepaymentScheduleRoute: typeof RepaymentScheduleRoute
   SuccessRoute: typeof SuccessRoute
@@ -181,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/rates'
       fullPath: '/rates'
       preLoaderRoute: typeof RatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/loans': {
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoansRoute: LoansRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   RatesRoute: RatesRoute,
   RepaymentScheduleRoute: RepaymentScheduleRoute,
   SuccessRoute: SuccessRoute,
